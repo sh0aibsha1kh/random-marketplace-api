@@ -1,0 +1,12 @@
+type Query {
+    getAllProducts(inStock: Boolean): [Product!]!
+    getProductByTitle(title: String!): [Product]!
+}
+type Mutation {
+    purchase(productName: String!): Product
+}
+type Product {
+    title: String!
+    price: Float!
+    inventory_count: Int!
+}
