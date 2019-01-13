@@ -1,405 +1,106 @@
-const productList = [{
-    title: "Legacy",
-    price: 5206.71,
-    inventory_count: 5
-}, {
-    title: "LS Hybrid",
-    price: 6234.99,
-    inventory_count: 2
-}, {
-    title: "Ascender",
-    price: 4374.62,
-    inventory_count: 5
-}, {
-    title: "Altima",
-    price: 9551.81,
-    inventory_count: 2
-}, {
-    title: "Lancer Evolution",
-    price: 9774.13,
-    inventory_count: 2
-}, {
-    title: "Sequoia",
-    price: 6802.55,
-    inventory_count: 0
-}, {
-    title: "Mazdaspeed 3",
-    price: 1455.98,
-    inventory_count: 1
-}, {
-    title: "Durango",
-    price: 9242.79,
-    inventory_count: 5
-}, {
-    title: "New Beetle",
-    price: 8148.04,
-    inventory_count: 5
-}, {
-    title: "Suburban 2500",
-    price: 9756.35,
-    inventory_count: 2
-}, {
-    title: "Phantom",
-    price: 9545.77,
-    inventory_count: 3
-}, {
-    title: "A6",
-    price: 5278.69,
-    inventory_count: 1
-}, {
-    title: "Bonneville",
-    price: 6790.5,
-    inventory_count: 5
-}, {
-    title: "S8",
-    price: 1660.44,
-    inventory_count: 5
-}, {
-    title: "Elise",
-    price: 3366.82,
-    inventory_count: 2
-}, {
-    title: "Express 3500",
-    price: 7812.38,
-    inventory_count: 0
-}, {
-    title: "Grand Marquis",
-    price: 899.07,
-    inventory_count: 5
-}, {
-    title: "2e",
-    price: 6324.12,
-    inventory_count: 0
-}, {
-    title: "Impreza",
-    price: 1400.84,
-    inventory_count: 4
-}, {
-    title: "Tracer",
-    price: 8482.63,
-    inventory_count: 1
-}, {
-    title: "Protege",
-    price: 1401.08,
-    inventory_count: 4
-}, {
-    title: "911",
-    price: 7394.46,
-    inventory_count: 5
-}, {
-    title: "V70",
-    price: 4555.22,
-    inventory_count: 3
-}, {
-    title: "Fiesta",
-    price: 5832.46,
-    inventory_count: 5
-}, {
-    title: "RL",
-    price: 4645.84,
-    inventory_count: 4
-}, {
-    title: "Ram 2500",
-    price: 2427.34,
-    inventory_count: 5
-}, {
-    title: "Cougar",
-    price: 5924.96,
-    inventory_count: 1
-}, {
-    title: "Grand Prix",
-    price: 1377.0,
-    inventory_count: 3
-}, {
-    title: "Montero Sport",
-    price: 970.18,
-    inventory_count: 0
-}, {
-    title: "Discovery",
-    price: 9246.04,
-    inventory_count: 1
-}, {
-    title: "Escort",
-    price: 9963.71,
-    inventory_count: 4
-}, {
-    title: "Grand Am",
-    price: 1080.22,
-    inventory_count: 3
-}, {
-    title: "RAV4",
-    price: 5926.38,
-    inventory_count: 2
-}, {
-    title: "Eurovan",
-    price: 8389.36,
-    inventory_count: 0
-}, {
-    title: "GTI",
-    price: 4346.79,
-    inventory_count: 1
-}, {
-    title: "XK",
-    price: 6361.97,
-    inventory_count: 3
-}, {
-    title: "Cavalier",
-    price: 8390.8,
-    inventory_count: 3
-}, {
-    title: "Golf",
-    price: 5001.28,
-    inventory_count: 5
-}, {
-    title: "Murano",
-    price: 8500.13,
-    inventory_count: 0
-}, {
-    title: "Lancer Evolution",
-    price: 764.61,
-    inventory_count: 0
-}, {
-    title: "Truck",
-    price: 8096.09,
-    inventory_count: 4
-}, {
-    title: "Sonoma Club Coupe",
-    price: 3805.02,
-    inventory_count: 5
-}, {
-    title: "Galant",
-    price: 4841.65,
-    inventory_count: 4
-}, {
-    title: "900",
-    price: 7068.07,
-    inventory_count: 4
-}, {
-    title: "Silhouette",
-    price: 3449.74,
-    inventory_count: 3
-}, {
-    title: "Skylark",
-    price: 4044.83,
-    inventory_count: 3
-}, {
-    title: "Camaro",
-    price: 8772.71,
-    inventory_count: 1
-}, {
-    title: "525",
-    price: 2582.18,
-    inventory_count: 1
-}, {
-    title: "L-Series",
-    price: 4132.45,
-    inventory_count: 1
-}, {
-    title: "Neon",
-    price: 8769.94,
-    inventory_count: 4
-}, {
-    title: "Seville",
-    price: 4431.66,
-    inventory_count: 3
-}, {
-    title: "Compass",
-    price: 8855.95,
-    inventory_count: 1
-}, {
-    title: "Corvette",
-    price: 2028.86,
-    inventory_count: 0
-}, {
-    title: "Yaris",
-    price: 7948.33,
-    inventory_count: 2
-}, {
-    title: "Sephia",
-    price: 8456.65,
-    inventory_count: 5
-}, {
-    title: "Forester",
-    price: 1200.65,
-    inventory_count: 5
-}, {
-    title: "Alliance",
-    price: 7896.6,
-    inventory_count: 5
-}, {
-    title: "SX4",
-    price: 8638.41,
-    inventory_count: 3
-}, {
-    title: "C70",
-    price: 9464.71,
-    inventory_count: 5
-}, {
-    title: "Charger",
-    price: 3373.81,
-    inventory_count: 5
-}, {
-    title: "S-Type",
-    price: 932.47,
-    inventory_count: 3
-}, {
-    title: "Legend",
-    price: 2733.12,
-    inventory_count: 0
-}, {
-    title: "SC",
-    price: 9700.62,
-    inventory_count: 5
-}, {
-    title: "SL-Class",
-    price: 4865.36,
-    inventory_count: 3
-}, {
-    title: "tC",
-    price: 5379.95,
-    inventory_count: 4
-}, {
-    title: "Blazer",
-    price: 4553.44,
-    inventory_count: 1
-}, {
-    title: "G",
-    price: 3193.07,
-    inventory_count: 5
-}, {
-    title: "Corvette",
-    price: 3099.87,
-    inventory_count: 0
-}, {
-    title: "Land Cruiser",
-    price: 6517.68,
-    inventory_count: 4
-}, {
-    title: "Ram 1500 Club",
-    price: 1876.28,
-    inventory_count: 0
-}, {
-    title: "Aerostar",
-    price: 4051.65,
-    inventory_count: 2
-}, {
-    title: "TrailBlazer",
-    price: 9121.02,
-    inventory_count: 0
-}, {
-    title: "80",
-    price: 3609.15,
-    inventory_count: 2
-}, {
-    title: "Electra",
-    price: 2978.37,
-    inventory_count: 2
-}, {
-    title: "Bonneville",
-    price: 7565.77,
-    inventory_count: 0
-}, {
-    title: "Mighty Max",
-    price: 9044.32,
-    inventory_count: 5
-}, {
-    title: "Q",
-    price: 6357.3,
-    inventory_count: 5
-}, {
-    title: "X5",
-    price: 5431.73,
-    inventory_count: 1
-}, {
-    title: "Range Rover",
-    price: 4227.54,
-    inventory_count: 1
-}, {
-    title: "Laser",
-    price: 4139.56,
-    inventory_count: 5
-}, {
-    title: "Prelude",
-    price: 9825.42,
-    inventory_count: 3
-}, {
-    title: "Grand Voyager",
-    price: 6290.99,
-    inventory_count: 2
-}, {
-    title: "Crossfire",
-    price: 4956.85,
-    inventory_count: 0
-}, {
-    title: "Dakota",
-    price: 1766.25,
-    inventory_count: 4
-}, {
-    title: "E-Series",
-    price: 5065.17,
-    inventory_count: 0
-}, {
-    title: "Outback",
-    price: 7329.48,
-    inventory_count: 4
-}, {
-    title: "Range Rover Sport",
-    price: 4639.23,
-    inventory_count: 3
-}, {
-    title: "Tacoma Xtra",
-    price: 5673.44,
-    inventory_count: 2
-}, {
-    title: "Tercel",
-    price: 3959.74,
-    inventory_count: 5
-}, {
-    title: "Hearse",
-    price: 6639.79,
-    inventory_count: 4
-}, {
-    title: "GL-Class",
-    price: 4569.19,
-    inventory_count: 5
-}, {
-    title: "Envoy XL",
-    price: 7977.07,
-    inventory_count: 0
-}, {
-    title: "Grand Marquis",
-    price: 3357.33,
-    inventory_count: 3
-}, {
-    title: "S2000",
-    price: 6138.74,
-    inventory_count: 2
-}, {
-    title: "Sidekick",
-    price: 2057.01,
-    inventory_count: 2
-}, {
-    title: "Sierra 2500",
-    price: 7947.65,
-    inventory_count: 2
-}, {
-    title: "G-Series 1500",
-    price: 7192.23,
-    inventory_count: 5
-}, {
-    title: "Sunfire",
-    price: 2907.09,
-    inventory_count: 5
-}, {
-    title: "Wrangler",
-    price: 9608.37,
-    inventory_count: 4
-}, {
-    title: "Grand Marquis",
-    price: 1699.16,
-    inventory_count: 0
-}];
+const productList = [
+	{ title: "pants", price: 21.08, inventory_count: 7 },
+	{ title: "keyboard", price: 19.03, inventory_count: 4 },
+	{ title: "lotion", price: 8.65, inventory_count: 5 },
+	{ title: "couch", price: 97.43, inventory_count: 5 },
+	{ title: "chalk", price: 43.0, inventory_count: 1 },
+	{ title: "sofa", price: 25.73, inventory_count: 7 },
+	{ title: "piano", price: 86.76, inventory_count: 0 },
+	{ title: "nail file", price: 98.57, inventory_count: 6 },
+	{ title: "cookie jar", price: 81.36, inventory_count: 7 },
+	{ title: "ipod", price: 90.58, inventory_count: 7 },
+	{ title: "truck", price: 3.84, inventory_count: 3 },
+	{ title: "tooth picks", price: 59.46, inventory_count: 0 },
+	{ title: "glasses", price: 100.33, inventory_count: 0 },
+	{ title: "fake flowers", price: 90.62, inventory_count: 8 },
+	{ title: "sailboat", price: 10.74, inventory_count: 0 },
+	{ title: "ice cube tray", price: 43.15, inventory_count: 3 },
+	{ title: "watch", price: 13.47, inventory_count: 10 },
+	{ title: "apple", price: 52.68, inventory_count: 0 },
+	{ title: "sponge", price: 87.49, inventory_count: 1 },
+	{ title: "shoes", price: 34.86, inventory_count: 4 },
+	{ title: "bananas", price: 98.39, inventory_count: 0 },
+	{ title: "bottle cap", price: 52.11, inventory_count: 9 },
+	{ title: "helmet", price: 45.52, inventory_count: 10 },
+	{ title: "video games", price: 55.66, inventory_count: 3 },
+	{ title: "tv", price: 40.57, inventory_count: 1 },
+	{ title: "rubber duck", price: 65.34, inventory_count: 3 },
+	{ title: "hair brush", price: 70.74, inventory_count: 3 },
+	{ title: "bread", price: 63.62, inventory_count: 5 },
+	{ title: "soap", price: 93.8, inventory_count: 3 },
+	{ title: "brocolli", price: 57.85, inventory_count: 0 },
+	{ title: "flag", price: 59.68, inventory_count: 9 },
+	{ title: "bow", price: 3.48, inventory_count: 8 },
+	{ title: "milk", price: 61.7, inventory_count: 0 },
+	{ title: "mouse pad", price: 80.3, inventory_count: 0 },
+	{ title: "computer", price: 32.06, inventory_count: 5 },
+	{ title: "toe ring", price: 64.88, inventory_count: 0 },
+	{ title: "puddle", price: 26.24, inventory_count: 4 },
+	{ title: "tree", price: 100.69, inventory_count: 9 },
+	{ title: "canvas", price: 98.95, inventory_count: 2 },
+	{ title: "twister", price: 35.39, inventory_count: 0 },
+	{ title: "pen", price: 91.66, inventory_count: 9 },
+	{ title: "cinder block", price: 13.66, inventory_count: 6 },
+	{ title: "shoe lace", price: 69.16, inventory_count: 0 },
+	{ title: "door", price: 7.01, inventory_count: 0 },
+	{ title: "sandal", price: 26.72, inventory_count: 0 },
+	{ title: "white out", price: 17.73, inventory_count: 3 },
+	{ title: "toothbrush", price: 76.25, inventory_count: 3 },
+	{ title: "socks", price: 82.55, inventory_count: 5 },
+	{ title: "perfume", price: 14.03, inventory_count: 4 },
+	{ title: "car", price: 36.44, inventory_count: 0 },
+	{ title: "chapter book", price: 70.73, inventory_count: 4 },
+	{ title: "paper", price: 20.55, inventory_count: 6 },
+	{ title: "speakers", price: 80.76, inventory_count: 0 },
+	{ title: "box", price: 79.11, inventory_count: 6 },
+	{ title: "remote", price: 96.34, inventory_count: 0 },
+	{ title: "nail clippers", price: 76.07, inventory_count: 0 },
+	{ title: "greeting card", price: 12.82, inventory_count: 0 },
+	{ title: "fridge", price: 4.15, inventory_count: 0 },
+	{ title: "grid paper", price: 18.58, inventory_count: 6 },
+	{ title: "keys", price: 25.3, inventory_count: 11 },
+	{ title: "balloon", price: 40.04, inventory_count: 0 },
+	{ title: "toilet", price: 4.67, inventory_count: 6 },
+	{ title: "monitor", price: 62.52, inventory_count: 4 },
+	{ title: "spoon", price: 84.79, inventory_count: 2 },
+	{ title: "mp3 player", price: 91.54, inventory_count: 7 },
+	{ title: "outlet", price: 17.21, inventory_count: 7 },
+	{ title: "clock", price: 67.82, inventory_count: 10 },
+	{ title: "newspaper", price: 3.99, inventory_count: 2 },
+	{ title: "glass", price: 89.59, inventory_count: 7 },
+	{ title: "eye liner", price: 14.66, inventory_count: 10 },
+	{ title: "eraser", price: 4.59, inventory_count: 10 },
+	{ title: "soy sauce packet", price: 86.15, inventory_count: 6 },
+	{ title: "spring", price: 100.58, inventory_count: 1 },
+	{ title: "credit card", price: 73.52, inventory_count: 6 },
+	{ title: "stop sign", price: 14.68, inventory_count: 8 },
+	{ title: "face wash", price: 66.05, inventory_count: 9 },
+	{ title: "bookmark", price: 39.24, inventory_count: 6 },
+	{ title: "radio", price: 21.11, inventory_count: 2 },
+	{ title: "candle", price: 93.97, inventory_count: 6 },
+	{ title: "lip gloss", price: 24.65, inventory_count: 7 },
+	{ title: "needle", price: 30.3, inventory_count: 0 },
+	{ title: "television", price: 83.59, inventory_count: 7 },
+	{ title: "plastic fork", price: 2.82, inventory_count: 11 },
+	{ title: "clamp", price: 72.92, inventory_count: 4 },
+	{ title: "model car", price: 59.11, inventory_count: 2 },
+	{ title: "tomato", price: 1.99, inventory_count: 1 },
+	{ title: "phone", price: 96.09, inventory_count: 0 },
+	{ title: "beef", price: 81.49, inventory_count: 5 },
+	{ title: "sticky note", price: 20.0, inventory_count: 6 },
+	{ title: "stockings", price: 54.77, inventory_count: 8 },
+	{ title: "blanket", price: 3.88, inventory_count: 0 },
+	{ title: "thermostat", price: 65.55, inventory_count: 3 },
+	{ title: "purse", price: 5.73, inventory_count: 10 },
+	{ title: "button", price: 60.58, inventory_count: 11 },
+	{ title: "sand paper", price: 89.11, inventory_count: 11 },
+	{ title: "screw", price: 45.31, inventory_count: 8 },
+	{ title: "house", price: 72.4, inventory_count: 4 },
+	{ title: "bottle", price: 99.48, inventory_count: 0 },
+	{ title: "glow stick", price: 99.97, inventory_count: 3 },
+	{ title: "chair", price: 1.97, inventory_count: 9 },
+];
 
 module.exports = {
-    productList
+	productList
 }
