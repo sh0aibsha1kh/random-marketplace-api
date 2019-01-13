@@ -38,8 +38,6 @@ function completeCart() {
     if (cartCreated) {
         for (let i = 0; i < cart.productsInCart.length; i++){
             for (let j = 0; j < productList.length; j++) {
-                console.log(cart.productsInCart[i]);
-                console.log(productList[j]);
                 if (cart.productsInCart[i].title === productList[j].title) {
                         productList[j].inventory_count -= 1;
                 }
