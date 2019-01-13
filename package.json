@@ -1,0 +1,33 @@
+{
+  "name": "shopify-marketplace-api",
+  "version": "1.0.0",
+  "description": "Shopify Developer Intern Challenge - Summer 2019",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sh0aibsha1kh/shopify-marketplace-api.git"
+  },
+  "keywords": [
+    "node",
+    "graphql",
+    "api",
+    "shopify",
+    "javascript"
+  ],
+  "author": "Shoaib Shaikh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sh0aibsha1kh/shopify-marketplace-api/issues"
+  },
+  "homepage": "https://github.com/sh0aibsha1kh/shopify-marketplace-api#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.16.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

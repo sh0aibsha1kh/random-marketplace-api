@@ -1,0 +1,405 @@
+const productList = [{
+    title: "Legacy",
+    price: 5206.71,
+    inventory_count: 5
+}, {
+    title: "LS Hybrid",
+    price: 6234.99,
+    inventory_count: 2
+}, {
+    title: "Ascender",
+    price: 4374.62,
+    inventory_count: 5
+}, {
+    title: "Altima",
+    price: 9551.81,
+    inventory_count: 2
+}, {
+    title: "Lancer Evolution",
+    price: 9774.13,
+    inventory_count: 2
+}, {
+    title: "Sequoia",
+    price: 6802.55,
+    inventory_count: 0
+}, {
+    title: "Mazdaspeed 3",
+    price: 1455.98,
+    inventory_count: 1
+}, {
+    title: "Durango",
+    price: 9242.79,
+    inventory_count: 5
+}, {
+    title: "New Beetle",
+    price: 8148.04,
+    inventory_count: 5
+}, {
+    title: "Suburban 2500",
+    price: 9756.35,
+    inventory_count: 2
+}, {
+    title: "Phantom",
+    price: 9545.77,
+    inventory_count: 3
+}, {
+    title: "A6",
+    price: 5278.69,
+    inventory_count: 1
+}, {
+    title: "Bonneville",
+    price: 6790.5,
+    inventory_count: 5
+}, {
+    title: "S8",
+    price: 1660.44,
+    inventory_count: 5
+}, {
+    title: "Elise",
+    price: 3366.82,
+    inventory_count: 2
+}, {
+    title: "Express 3500",
+    price: 7812.38,
+    inventory_count: 0
+}, {
+    title: "Grand Marquis",
+    price: 899.07,
+    inventory_count: 5
+}, {
+    title: "2e",
+    price: 6324.12,
+    inventory_count: 0
+}, {
+    title: "Impreza",
+    price: 1400.84,
+    inventory_count: 4
+}, {
+    title: "Tracer",
+    price: 8482.63,
+    inventory_count: 1
+}, {
+    title: "Protege",
+    price: 1401.08,
+    inventory_count: 4
+}, {
+    title: "911",
+    price: 7394.46,
+    inventory_count: 5
+}, {
+    title: "V70",
+    price: 4555.22,
+    inventory_count: 3
+}, {
+    title: "Fiesta",
+    price: 5832.46,
+    inventory_count: 5
+}, {
+    title: "RL",
+    price: 4645.84,
+    inventory_count: 4
+}, {
+    title: "Ram 2500",
+    price: 2427.34,
+    inventory_count: 5
+}, {
+    title: "Cougar",
+    price: 5924.96,
+    inventory_count: 1
+}, {
+    title: "Grand Prix",
+    price: 1377.0,
+    inventory_count: 3
+}, {
+    title: "Montero Sport",
+    price: 970.18,
+    inventory_count: 0
+}, {
+    title: "Discovery",
+    price: 9246.04,
+    inventory_count: 1
+}, {
+    title: "Escort",
+    price: 9963.71,
+    inventory_count: 4
+}, {
+    title: "Grand Am",
+    price: 1080.22,
+    inventory_count: 3
+}, {
+    title: "RAV4",
+    price: 5926.38,
+    inventory_count: 2
+}, {
+    title: "Eurovan",
+    price: 8389.36,
+    inventory_count: 0
+}, {
+    title: "GTI",
+    price: 4346.79,
+    inventory_count: 1
+}, {
+    title: "XK",
+    price: 6361.97,
+    inventory_count: 3
+}, {
+    title: "Cavalier",
+    price: 8390.8,
+    inventory_count: 3
+}, {
+    title: "Golf",
+    price: 5001.28,
+    inventory_count: 5
+}, {
+    title: "Murano",
+    price: 8500.13,
+    inventory_count: 0
+}, {
+    title: "Lancer Evolution",
+    price: 764.61,
+    inventory_count: 0
+}, {
+    title: "Truck",
+    price: 8096.09,
+    inventory_count: 4
+}, {
+    title: "Sonoma Club Coupe",
+    price: 3805.02,
+    inventory_count: 5
+}, {
+    title: "Galant",
+    price: 4841.65,
+    inventory_count: 4
+}, {
+    title: "900",
+    price: 7068.07,
+    inventory_count: 4
+}, {
+    title: "Silhouette",
+    price: 3449.74,
+    inventory_count: 3
+}, {
+    title: "Skylark",
+    price: 4044.83,
+    inventory_count: 3
+}, {
+    title: "Camaro",
+    price: 8772.71,
+    inventory_count: 1
+}, {
+    title: "525",
+    price: 2582.18,
+    inventory_count: 1
+}, {
+    title: "L-Series",
+    price: 4132.45,
+    inventory_count: 1
+}, {
+    title: "Neon",
+    price: 8769.94,
+    inventory_count: 4
+}, {
+    title: "Seville",
+    price: 4431.66,
+    inventory_count: 3
+}, {
+    title: "Compass",
+    price: 8855.95,
+    inventory_count: 1
+}, {
+    title: "Corvette",
+    price: 2028.86,
+    inventory_count: 0
+}, {
+    title: "Yaris",
+    price: 7948.33,
+    inventory_count: 2
+}, {
+    title: "Sephia",
+    price: 8456.65,
+    inventory_count: 5
+}, {
+    title: "Forester",
+    price: 1200.65,
+    inventory_count: 5
+}, {
+    title: "Alliance",
+    price: 7896.6,
+    inventory_count: 5
+}, {
+    title: "SX4",
+    price: 8638.41,
+    inventory_count: 3
+}, {
+    title: "C70",
+    price: 9464.71,
+    inventory_count: 5
+}, {
+    title: "Charger",
+    price: 3373.81,
+    inventory_count: 5
+}, {
+    title: "S-Type",
+    price: 932.47,
+    inventory_count: 3
+}, {
+    title: "Legend",
+    price: 2733.12,
+    inventory_count: 0
+}, {
+    title: "SC",
+    price: 9700.62,
+    inventory_count: 5
+}, {
+    title: "SL-Class",
+    price: 4865.36,
+    inventory_count: 3
+}, {
+    title: "tC",
+    price: 5379.95,
+    inventory_count: 4
+}, {
+    title: "Blazer",
+    price: 4553.44,
+    inventory_count: 1
+}, {
+    title: "G",
+    price: 3193.07,
+    inventory_count: 5
+}, {
+    title: "Corvette",
+    price: 3099.87,
+    inventory_count: 0
+}, {
+    title: "Land Cruiser",
+    price: 6517.68,
+    inventory_count: 4
+}, {
+    title: "Ram 1500 Club",
+    price: 1876.28,
+    inventory_count: 0
+}, {
+    title: "Aerostar",
+    price: 4051.65,
+    inventory_count: 2
+}, {
+    title: "TrailBlazer",
+    price: 9121.02,
+    inventory_count: 0
+}, {
+    title: "80",
+    price: 3609.15,
+    inventory_count: 2
+}, {
+    title: "Electra",
+    price: 2978.37,
+    inventory_count: 2
+}, {
+    title: "Bonneville",
+    price: 7565.77,
+    inventory_count: 0
+}, {
+    title: "Mighty Max",
+    price: 9044.32,
+    inventory_count: 5
+}, {
+    title: "Q",
+    price: 6357.3,
+    inventory_count: 5
+}, {
+    title: "X5",
+    price: 5431.73,
+    inventory_count: 1
+}, {
+    title: "Range Rover",
+    price: 4227.54,
+    inventory_count: 1
+}, {
+    title: "Laser",
+    price: 4139.56,
+    inventory_count: 5
+}, {
+    title: "Prelude",
+    price: 9825.42,
+    inventory_count: 3
+}, {
+    title: "Grand Voyager",
+    price: 6290.99,
+    inventory_count: 2
+}, {
+    title: "Crossfire",
+    price: 4956.85,
+    inventory_count: 0
+}, {
+    title: "Dakota",
+    price: 1766.25,
+    inventory_count: 4
+}, {
+    title: "E-Series",
+    price: 5065.17,
+    inventory_count: 0
+}, {
+    title: "Outback",
+    price: 7329.48,
+    inventory_count: 4
+}, {
+    title: "Range Rover Sport",
+    price: 4639.23,
+    inventory_count: 3
+}, {
+    title: "Tacoma Xtra",
+    price: 5673.44,
+    inventory_count: 2
+}, {
+    title: "Tercel",
+    price: 3959.74,
+    inventory_count: 5
+}, {
+    title: "Hearse",
+    price: 6639.79,
+    inventory_count: 4
+}, {
+    title: "GL-Class",
+    price: 4569.19,
+    inventory_count: 5
+}, {
+    title: "Envoy XL",
+    price: 7977.07,
+    inventory_count: 0
+}, {
+    title: "Grand Marquis",
+    price: 3357.33,
+    inventory_count: 3
+}, {
+    title: "S2000",
+    price: 6138.74,
+    inventory_count: 2
+}, {
+    title: "Sidekick",
+    price: 2057.01,
+    inventory_count: 2
+}, {
+    title: "Sierra 2500",
+    price: 7947.65,
+    inventory_count: 2
+}, {
+    title: "G-Series 1500",
+    price: 7192.23,
+    inventory_count: 5
+}, {
+    title: "Sunfire",
+    price: 2907.09,
+    inventory_count: 5
+}, {
+    title: "Wrangler",
+    price: 9608.37,
+    inventory_count: 4
+}, {
+    title: "Grand Marquis",
+    price: 1699.16,
+    inventory_count: 0
+}];
+
+module.exports = {
+    productList
+}
