@@ -1,6 +1,6 @@
 import random
 
-product_list = open("./product_list.js", "w")
+product_list = open("./ProductList.js", "w")
 with open('./random_item_list.txt') as random_item_list:
     random_items = random_item_list.read().splitlines()
 
