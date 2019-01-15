@@ -23,7 +23,7 @@ var cart = {
 
 
 function createCart() {
-    if(!isUserLoggedIn){
+    if (!isUserLoggedIn) {
         throw new Error('Please log in first.')
     }
     if (isCartCreated) {
@@ -75,11 +75,16 @@ function completeCart() {
 }
 
 async function signUp(parent, args) {
+
     user.id = `${args.username}@${new Date().getTime()}`;
     user.username = args.username;
+    if (doesUserExist(args.username, users)){
+        throw new Error('This username is already taken.');
+    }
+    
     user.password = await bcrypt.hash(args.password, 10);
     const token = jwt.sign({ userId: user.id }, APP_SECRET);
-    const message = "You have successfully signed up, please log in."
+    const message = 'You have successfully signed up, please log in.';
     users.push(user);
 
     return {
@@ -90,15 +95,21 @@ async function signUp(parent, args) {
 }
 
 async function logIn(parent, args) {
+    if (isUserLoggedIn) {
+        throw new Error('You are already logged in.');
+    }
     const username = args.username;
-    const isValidPassword = await bcrypt.compare(args.password, user.password);
+    if (!doesUserExist(username, users)) {
+        throw new Error('This username/password is invalid');
+    }
 
-    if (!doesUserExist(username, users) || !isValidPassword) {
+    const isValidPassword = await bcrypt.compare(args.password, user.password);
+    if (!isValidPassword) {
         throw new Error('This username/password is invalid');
     }
 
     const token = jwt.sign({ userId: user.id }, APP_SECRET);
-    const message = "You have succesfully logged in, enjoy your shopping!"
+    const message = 'You have succesfully logged in, enjoy your shopping!';
 
     isUserLoggedIn = true;
 
