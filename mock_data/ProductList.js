@@ -1,4 +1,4 @@
-const productList = [
+var productList = [
 	{ title: "pants", price: 34.55, inventory_count: 4 },
 	{ title: "keyboard", price: 46.99, inventory_count: 7 },
 	{ title: "lotion", price: 29.65, inventory_count: 9 },

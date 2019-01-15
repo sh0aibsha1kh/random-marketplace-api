@@ -1,6 +1,7 @@
 type Query {
     getAllProducts(inStock: Boolean): [Product!]!
     getProductByTitle(title: String!): [Product]!
+    getCart: Cart
 }
 
 type Mutation {
