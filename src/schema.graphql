@@ -8,7 +8,7 @@ type Query {
 type Mutation {
     createCart: Cart!
     addProductToCart(title: String!): Cart
-    completeCart: Cart
+    completeCart: TransactionConfirmation
     signUp(username: String!, password: String!): AuthPayload
     logIn(username: String!, password: String!): AuthPayload
     logOut: AuthPayload
@@ -36,4 +36,9 @@ type User {
     username: String!
     password: String!
     cart: Cart
+}
+
+type TransactionConfirmation {
+    message: String!
+    purchasedItems: [Product]!
 }

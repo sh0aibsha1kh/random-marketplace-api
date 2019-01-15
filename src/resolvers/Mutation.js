@@ -40,19 +40,43 @@ function addProductToCart(parent, args) {
 }
 
 function completeCart() {
+    var isStockEmpty = false;
+
     if (cartInfo.isCartCreated) {
+
         for (let i = 0; i < cartInfo.cart.productsInCart.length; i++) {
             for (let j = 0; j < productList.length; j++) {
                 if (cartInfo.cart.productsInCart[i].title === productList[j].title) {
+                    if (productList[j].inventory_count - 1 < 0) {
+                        isStockEmpty = true;
+                    }
                     productList[j].inventory_count -= 1;
                 }
             }
+        }
+
+        if (isStockEmpty) {
+            for (let i = 0; i < cartInfo.cart.productsInCart.length; i++) { // put everything back
+                for (let j = 0; j < productList.length; j++) {
+                    if (cartInfo.cart.productsInCart[i].title === productList[j].title) {
+                        productList[j].inventory_count += 1;
+                    }
+                }
+            }
+            return {
+                message: 'Some items are out of stock, this cart cannot be completed.',
+                purchasedItems: []
+            }
+        }
+        const TransactionConfirmation = {
+            message: 'Cart completed successfully.',
+            purchasedItems: cartInfo.cart.productsInCart
         }
         cartInfo.cart.productsInCart = []
         cartInfo.cart.totalAmount = 0;
         cartInfo.isCartCreated = false;
         userInfo.user.cart = cartInfo.cart;
-        return cartInfo.cart;
+        return TransactionConfirmation
     } else {
         throw new Error('Please create a cart first.');
     }
@@ -104,7 +128,7 @@ async function logIn(parent, args) {
 
     const token = jwt.sign({ userId: existingUser.id }, APP_SECRET);
     const message = 'You have succesfully logged in, enjoy your shopping!';
-    
+
     userInfo.isUserLoggedIn = true;
 
     return {
