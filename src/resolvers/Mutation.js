@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 var { productList } = require('../../mock_data/ProductList');
 
-const APP_SECRET = "Gr4phQL"
+const APP_SECRET = "Gr4phQL > N0t3p4d"
 
 // ========== USERS ==========
 var isUserLoggedIn = false;
@@ -29,6 +29,7 @@ function createCart() {
     if (isCartCreated) {
         throw new Error('a cart has already been created');
     } else {
+        user.cart = cart
         isCartCreated = true;
         return cart;
     }
@@ -41,6 +42,7 @@ function addProductToCart(parent, args) {
                 if (productList[i].inventory_count > 0) {
                     cart.productsInCart.push(productList[i]);
                     cart.totalAmount += productList[i].price;
+                    user.cart = cart;
                     return cart;
                 } else {
                     throw new Error('sorry, this item is out of stock');
@@ -65,14 +67,15 @@ function completeCart() {
         cart.productsInCart = []
         cart.totalAmount = 0;
         isCartCreated = false;
+        user.cart = cart;
         return cart;
     } else {
-        throw new Error('Please create a cart first');
+        throw new Error('please create a cart first');
     }
 }
 
 async function signUp(parent, args) {
-    user.id = new Date().getTime();
+    user.id = `args.username@${new Date().getTime()}`;
     user.username = args.username;
     user.password = await bcrypt.hash(args.password, 10);
     const token = jwt.sign({ userId: user.id }, APP_SECRET);
@@ -98,8 +101,6 @@ async function logIn(parent, args) {
         user,
         token
     }
-
-
 }
 
 // ========== HELPER FUNCTIONS ==========
