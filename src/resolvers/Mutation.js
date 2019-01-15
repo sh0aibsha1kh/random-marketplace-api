@@ -60,19 +60,27 @@ function completeCart() {
 
 async function signUp(parent, args) {
 
-    userInfo.user.id = `${args.username}@${new Date().getTime()}`;
-    userInfo.user.username = args.username;
-    if (doesUserExist(args.username, userInfo.users)) {
+    if (getExistingUser(args.username, userInfo.users)) {
         throw new Error('This username is already taken.');
     }
 
-    userInfo.user.password = await bcrypt.hash(args.password, 10);
-    const token = jwt.sign({ userId: userInfo.user.id }, APP_SECRET);
+    const newUserID = `${args.username}@${new Date().getTime()}`;
+    const newUserUsername = args.username;
+    const newUserPassword = await bcrypt.hash(args.password, 10);
+    const newUser = {
+        id: newUserID,
+        username: newUserUsername,
+        password: newUserPassword,
+        cart: null
+    }
+
+    const token = jwt.sign({ userId: newUserID }, APP_SECRET);
     const message = 'You have successfully signed up, please log in.';
-    userInfo.users.push(userInfo.user);
+
+    userInfo.users.push(newUser);
 
     return {
-        user: userInfo.user,
+        user: newUser,
         message: message,
         token: token
     }
@@ -83,35 +91,50 @@ async function logIn(parent, args) {
         throw new Error('You are already logged in.');
     }
     const username = args.username;
-    if (!doesUserExist(username, userInfo.users)) {
-        throw new Error('This username/password is invalid');
+    if (!getExistingUser(username, userInfo.users)) {
+        throw new Error('This username/password is invalid.');
     }
 
-    const isValidPassword = await bcrypt.compare(args.password, userInfo.user.password);
+    const existingUser = getExistingUser(username, userInfo.users);
+
+    const isValidPassword = await bcrypt.compare(args.password, existingUser.password);
     if (!isValidPassword) {
-        throw new Error('This username/password is invalid');
+        throw new Error('This username/password is invalid.');
     }
 
-    const token = jwt.sign({ userId: userInfo.user.id }, APP_SECRET);
+    const token = jwt.sign({ userId: existingUser.id }, APP_SECRET);
     const message = 'You have succesfully logged in, enjoy your shopping!';
-
+    
     userInfo.isUserLoggedIn = true;
 
     return {
-        user: userInfo.user,
+        user: existingUser,
         message: message,
         token: token
     }
 }
 
+async function logOut(parent, args) {
+    if (!userInfo.isUserLoggedIn) {
+        throw new Error('You are not logged in.');
+    }
+
+    userInfo.isUserLoggedIn = false;
+    const message = 'You have successfully logged out.';
+
+    return {
+        message
+    }
+}
+
 // ========== HELPER FUNCTIONS ==========
-function doesUserExist(username, users) {
+function getExistingUser(username, users) {
     for (let i = 0; i < users.length; i++) {
         if (username === users[i].username) {
-            return true;
+            return users[i]
         }
     }
-    return false;
+    return null;
 }
 
 
@@ -122,4 +145,5 @@ module.exports = {
     completeCart,
     signUp,
     logIn,
+    logOut
 }
