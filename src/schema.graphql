@@ -7,6 +7,8 @@ type Mutation {
     createCart: Cart!
     addProductToCart(title: String!): Cart
     completeCart: Cart
+    signUp(username: String!, password: String!): AuthPayload
+    logIn(username: String!, password: String!): AuthPayload
 }
 
 type Product {
@@ -18,4 +20,14 @@ type Product {
 type Cart {
     productsInCart: [Product]!
     totalAmount: Float!
+}
+
+type AuthPayload {
+    user: User
+    token: String
+}
+
+type User {
+    username: String!
+    cart: Cart
 }
