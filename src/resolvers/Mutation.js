@@ -4,31 +4,38 @@ var { productList } = require('../../mock_data/ProductList');
 
 const APP_SECRET = "Gr4phQL"
 
+// ========== USERS ==========
+var isUserLoggedIn = false;
 var user = {
     id: null,
     username: null,
     password: null,
     cart: null
-}
+};
 var users = [];
 
-var cartCreated = false;
+// ========== CARTS ==========
+var isCartCreated = false;
 var cart = {
     productsInCart: [],
     totalAmount: 0.0
 };
 
+
 function createCart() {
-    if (cartCreated) {
-        throw new Error('A cart has already been created.');
+    if(!isUserLoggedIn){
+        throw new Error('please log in first')
+    }
+    if (isCartCreated) {
+        throw new Error('a cart has already been created');
     } else {
-        cartCreated = true;
+        isCartCreated = true;
         return cart;
     }
 }
 
 function addProductToCart(parent, args) {
-    if (cartCreated) {
+    if (isCartCreated) {
         for (let i = 0; i < productList.length; i++) {
             if (productList[i].title === args.title) {
                 if (productList[i].inventory_count > 0) {
@@ -36,18 +43,18 @@ function addProductToCart(parent, args) {
                     cart.totalAmount += productList[i].price;
                     return cart;
                 } else {
-                    throw new Error('Sorry, this item is out of stock.');
+                    throw new Error('sorry, this item is out of stock');
                 }
             }
         }
-        throw new Error('This item does not exist.');
+        throw new Error('this item does not exist');
     } else {
-        throw new Error('Please create a cart first');
+        throw new Error('please create a cart first');
     }
 }
 
 function completeCart() {
-    if (cartCreated) {
+    if (isCartCreated) {
         for (let i = 0; i < cart.productsInCart.length; i++) {
             for (let j = 0; j < productList.length; j++) {
                 if (cart.productsInCart[i].title === productList[j].title) {
@@ -57,7 +64,7 @@ function completeCart() {
         }
         cart.productsInCart = []
         cart.totalAmount = 0;
-        cartCreated = false;
+        isCartCreated = false;
         return cart;
     } else {
         throw new Error('Please create a cart first');
@@ -79,13 +86,10 @@ async function signUp(parent, args) {
 
 async function logIn(parent, args) {
     const username = args.username;
-    if (!doesUserExist(username, users)) {
-        throw new Error('This user does not exist');
-    }
-
     const isValidPassword = await bcrypt.compare(args.password, user.password);
-    if (!isValidPassword) {
-        throw new Error('This password is invalid');
+
+    if (!doesUserExist(username, users) || !isValidPassword) {
+        throw new Error('This username/password is invalid');
     }
 
     const token = jwt.sign({ userId: user.id }, APP_SECRET)
@@ -98,7 +102,7 @@ async function logIn(parent, args) {
 
 }
 
-// HELPER FUNCTIONS
+// ========== HELPER FUNCTIONS ==========
 function doesUserExist(username, users) {
     for (let i = 0; i < users.length; i++) {
         if (username === users[i].username) {
