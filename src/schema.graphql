@@ -28,6 +28,8 @@ type AuthPayload {
 }
 
 type User {
+    id: Float!
     username: String!
+    password: String!
     cart: Cart
 }
