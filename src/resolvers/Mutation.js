@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 var { productList } = require('../../mock_data/ProductList');
 
-const APP_SECRET = "Gr4phQL > N0t3p4d"
+const APP_SECRET = "_Gr4phQL_"
 
 // ========== USERS ==========
 var isUserLoggedIn = false;
@@ -24,10 +24,10 @@ var cart = {
 
 function createCart() {
     if(!isUserLoggedIn){
-        throw new Error('please log in first')
+        throw new Error('Please log in first.')
     }
     if (isCartCreated) {
-        throw new Error('a cart has already been created');
+        throw new Error('A cart has already been created.');
     } else {
         user.cart = cart
         isCartCreated = true;
@@ -45,13 +45,13 @@ function addProductToCart(parent, args) {
                     user.cart = cart;
                     return cart;
                 } else {
-                    throw new Error('sorry, this item is out of stock');
+                    throw new Error('Sorry, this item is out of stock.');
                 }
             }
         }
-        throw new Error('this item does not exist');
+        throw new Error('This item does not exist.');
     } else {
-        throw new Error('please create a cart first');
+        throw new Error('Please create a cart first.');
     }
 }
 
@@ -70,19 +70,21 @@ function completeCart() {
         user.cart = cart;
         return cart;
     } else {
-        throw new Error('please create a cart first');
+        throw new Error('Please create a cart first.');
     }
 }
 
 async function signUp(parent, args) {
-    user.id = `args.username@${new Date().getTime()}`;
+    user.id = `${args.username}@${new Date().getTime()}`;
     user.username = args.username;
     user.password = await bcrypt.hash(args.password, 10);
     const token = jwt.sign({ userId: user.id }, APP_SECRET);
+    const message = "You have successfully signed up, please log in."
     users.push(user);
 
     return {
         user,
+        message,
         token
     }
 }
@@ -95,10 +97,14 @@ async function logIn(parent, args) {
         throw new Error('This username/password is invalid');
     }
 
-    const token = jwt.sign({ userId: user.id }, APP_SECRET)
+    const token = jwt.sign({ userId: user.id }, APP_SECRET);
+    const message = "You have succesfully logged in, enjoy your shopping!"
+
+    isUserLoggedIn = true;
 
     return {
         user,
+        message,
         token
     }
 }

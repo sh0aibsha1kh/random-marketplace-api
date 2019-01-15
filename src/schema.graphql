@@ -24,6 +24,7 @@ type Cart {
 
 type AuthPayload {
     user: User
+    message: String
     token: String
 }
 
