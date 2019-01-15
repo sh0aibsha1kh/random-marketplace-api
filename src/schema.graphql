@@ -1,6 +1,7 @@
 type Query {
     getAllProducts(inStock: Boolean): [Product!]!
     getProductByTitle(title: String!): [Product]!
+    getProductsByPriceRange(min: Float!, max: Float!): [Product]!
     getCart: Cart
 }
 

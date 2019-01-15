@@ -118,8 +118,8 @@ async function logOut(parent, args) {
     if (!userInfo.isUserLoggedIn) {
         throw new Error('You are not logged in.');
     }
-
     userInfo.isUserLoggedIn = false;
+    userInfo.user = null
     const message = 'You have successfully logged out.';
 
     return {

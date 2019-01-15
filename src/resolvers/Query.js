@@ -12,9 +12,11 @@ function getAllProducts(parent, args) {
 }
 
 function getProductByTitle(parent, args) {
-    if (args.title) {
-        return productList.filter(product => product.title === args.title);
-    }
+    return productList.filter(product => product.title === args.title);
+}
+
+function getProductsByPriceRange(parent, args) {
+    return productList.filter(product => product.price >= args.min && product.price <= args.max);
 }
 
 function getCart(parent, args) {
@@ -30,5 +32,6 @@ function getCart(parent, args) {
 module.exports = {
     getAllProducts,
     getProductByTitle,
+    getProductsByPriceRange,
     getCart
 }
