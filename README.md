@@ -37,12 +37,158 @@ node src/index.js
 The server should now be started on http://localhost:4000.
 
 ## Sample Flows
+Let's start shopping!
+### Fetch a product by title
+Enter the following query:
+```
+query {
+  getProductByTitle(title: "pants") {
+    title
+    price
+    inventory_count
+  }
+}
+```
+
+### Fetch all products
+Enter the following query:
+```
+query {
+  getAllProducts {
+    title
+    price
+    inventory_count
+  }
+}
+```
+
+### Fetch all products that are in stock
+Enter the following query:
+```
+query {
+  getAllProducts(inStock: true) {
+    title
+    price
+    inventory_count
+  }
+}
+```
+
+### Fetch products by price range
+Enter the following query:
+```
+query {
+  getProductsByPriceRange(min: 10, max: 50) {
+    title
+    price
+    inventory_count
+  }
+}
+```
+
+### Make a purchase
+1. Create an account.
+```
+mutation {
+  signUp(username: "shopper123", password: "p4ssw0rd") {
+    user {
+      id
+      username
+      password
+      cart {
+        productsInCart {
+          title
+          price
+        }
+        totalAmount
+      }
+    }
+    message
+    token
+  }
+}
+```
+
+2. Let's sign in.
+```
+mutation {
+  logIn(username: "shopper123", password: "p4ssw0rd") {
+    user {
+      id
+      username
+      password
+      cart {
+        productsInCart {
+          title
+          price
+        }
+        totalAmount
+      }
+    }
+    message
+    token
+  }
+}
+```
+3. Create a cart.
+```
+mutation {
+  createCart {
+    productsInCart {
+      title
+      price
+    }
+    totalAmount
+  }
+}
+```
+
+4. Add products to your cart.
+```
+mutation {
+  addProductToCart(title: "lotion") {
+    productsInCart {
+      title
+      price
+    }
+    totalAmount
+  }
+}
+```
+
+5. Complete your cart.
+```
+mutation {
+  completeCart {
+    purchasedItems {
+      price
+      title
+    }
+    message
+  }
+}
+```
+
+6. Log out.
+```
+mutation {
+  logOut{
+    message
+  }
+}
+```
 
 ## Testing
+
+In a separate terminal, while the server is currently running on http://localhost:4000/, run the following command:
+```
+npm test
+```
 
 ## Next Steps
 - API
     - Connect to a database
+    - Add pagination to queries
 - Users
     - Support multiple active logged in sessions
     - View order history
