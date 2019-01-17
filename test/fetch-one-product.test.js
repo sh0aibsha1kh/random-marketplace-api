@@ -10,13 +10,13 @@ query {
 
 const expected = {
     "getProductByTitle": [
-      {
-        "title": "pants"
-      }
+        {
+            "title": "pants"
+        }
     ]
-  }
+}
 
-test('Request pants', async () => {
+test('fetch pants', async () => {
     const response = await request(host, query);
     expect(response).toEqual(expected);
 });
