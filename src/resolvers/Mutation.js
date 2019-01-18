@@ -1,11 +1,13 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const APP_SECRET = require('../utils/utils');
 var { productList } = require('../../mock_data/ProductList');
 var userInfo = require('../variables/Users');
 var cartInfo = require('../variables/Carts');
 
-const APP_SECRET = "_Gr4phQL_"
-
+/**
+ * Create a cart for a logged in user who doesn't already have a cart created.
+ */
 function createCart() {
     if (!userInfo.isUserLoggedIn) {
         throw new Error('Please log in first.')
@@ -19,6 +21,9 @@ function createCart() {
     }
 }
 
+/**
+ * Add a product to an existing cart if the product exists and is in stock.
+ */
 function addProductToCart(parent, args) {
     if (cartInfo.isCartCreated) {
         for (let i = 0; i < productList.length; i++) {
@@ -39,6 +44,11 @@ function addProductToCart(parent, args) {
     }
 }
 
+/**
+ * Complete a cart by reducing the inventory_count of each product in the cart. 
+ * If a product in the cart runs out of stock, this cart cannot be completed. In 
+ * this case, put everything back.
+ */
 function completeCart() {
     var isStockEmpty = false;
 
@@ -56,13 +66,7 @@ function completeCart() {
         }
 
         if (isStockEmpty) {
-            for (let i = 0; i < cartInfo.cart.productsInCart.length; i++) { // put everything back
-                for (let j = 0; j < productList.length; j++) {
-                    if (cartInfo.cart.productsInCart[i].title === productList[j].title) {
-                        productList[j].inventory_count += 1;
-                    }
-                }
-            }
+            putProductsBack();
             return {
                 message: 'Some items are out of stock, this cart cannot be completed.',
                 purchasedItems: []
@@ -82,8 +86,10 @@ function completeCart() {
     }
 }
 
+/**
+ * Register a new user.
+ */
 async function signUp(parent, args) {
-
     if (getExistingUser(args.username, userInfo.users)) {
         throw new Error('This username is already taken.');
     }
@@ -110,6 +116,9 @@ async function signUp(parent, args) {
     }
 }
 
+/**
+ * Log in as an existing user.
+ */
 async function logIn(parent, args) {
     if (userInfo.isUserLoggedIn) {
         throw new Error('You are already logged in.');
@@ -138,6 +147,9 @@ async function logIn(parent, args) {
     }
 }
 
+/**
+ * Log out of a currently logged in account.
+ */
 async function logOut(parent, args) {
     if (!userInfo.isUserLoggedIn) {
         throw new Error('You are not logged in.');
@@ -152,6 +164,10 @@ async function logOut(parent, args) {
 }
 
 // ========== HELPER FUNCTIONS ==========
+
+/**
+ * Return the user associated with the given username.
+ */
 function getExistingUser(username, users) {
     for (let i = 0; i < users.length; i++) {
         if (username === users[i].username) {
@@ -159,6 +175,20 @@ function getExistingUser(username, users) {
         }
     }
     return null;
+}
+
+/**
+ * Put back every product that the user attempted to purchase but was
+ * unable to because of no available inventory.
+ */
+function putProductsBack(){
+    for (let i = 0; i < cartInfo.cart.productsInCart.length; i++) {
+        for (let j = 0; j < productList.length; j++) {
+            if (cartInfo.cart.productsInCart[i].title === productList[j].title) {
+                productList[j].inventory_count += 1;
+            }
+        }
+    }
 }
 
 

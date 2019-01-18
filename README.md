@@ -39,7 +39,6 @@ The server should now be started on http://localhost:4000.
 ## Sample Flows
 Let's start shopping!
 ### Fetch a product by title
-Enter the following query:
 ```
 query {
   getProductByTitle(title: "pants") {
@@ -51,7 +50,6 @@ query {
 ```
 
 ### Fetch all products
-Enter the following query:
 ```
 query {
   getAllProducts {
@@ -63,7 +61,6 @@ query {
 ```
 
 ### Fetch all products that are in stock
-Enter the following query:
 ```
 query {
   getAllProducts(inStock: true) {
@@ -172,7 +169,7 @@ mutation {
 6. Log out.
 ```
 mutation {
-  logOut{
+  logOut {
     message
   }
 }

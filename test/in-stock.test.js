@@ -1,6 +1,7 @@
 const { request } = require('graphql-request');
 
 const host = "http://localhost:4000";
+
 const query = `
 query {
     getAllProducts(inStock: true) {
