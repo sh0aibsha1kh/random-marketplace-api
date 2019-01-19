@@ -157,7 +157,7 @@ mutation {
 ```
 mutation {
   completeCart {
-    purchasedItems {
+    purchasedProducts {
       price
       title
     }
