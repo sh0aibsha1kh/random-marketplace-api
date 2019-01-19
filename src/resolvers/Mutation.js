@@ -69,12 +69,12 @@ function completeCart() {
             putProductsBack();
             return {
                 message: 'Some items are out of stock, this cart cannot be completed.',
-                purchasedItems: []
+                purchasedProducts: []
             }
         }
         const TransactionConfirmation = {
             message: 'Cart completed successfully.',
-            purchasedItems: cartInfo.cart.productsInCart
+            purchasedProducts: cartInfo.cart.productsInCart
         }
         cartInfo.cart.productsInCart = []
         cartInfo.cart.totalAmount = 0;

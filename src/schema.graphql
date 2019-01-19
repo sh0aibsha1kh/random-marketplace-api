@@ -40,5 +40,5 @@ type User {
 
 type TransactionConfirmation {
     message: String!
-    purchasedItems: [Product]!
+    purchasedProducts: [Product]!
 }
