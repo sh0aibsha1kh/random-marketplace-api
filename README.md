@@ -177,7 +177,7 @@ mutation {
 
 ## Testing
 
-In a separate terminal, while the server is currently running on http://localhost:4000/, run the following command:
+In a separate terminal, while the server is currently running on http://localhost:4000/, enter the following command:
 ```
 npm test
 ```
@@ -194,6 +194,7 @@ npm test
     - Add a rating system
     - Add more descriptive fields (category, seller, etc)
 - Carts
+    - Add functionality to remove an item from your cart
     - Add functionality to *hold* an item while it is in your cart
     - Retain cart content upon logging out and logging back in
 
