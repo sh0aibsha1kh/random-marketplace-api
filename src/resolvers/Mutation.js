@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const APP_SECRET = require('../utils/utils');
+const { APP_SECRET } = require('../utils/utils');
 var { productList } = require('../../mock_data/ProductList');
 var userInfo = require('../variables/Users');
 var cartInfo = require('../variables/Carts');
@@ -94,6 +94,10 @@ async function signUp(parent, args) {
         throw new Error('This username is already taken.');
     }
 
+    if (args.password.length < 8) {
+        throw new Error('Passwords must be greater than 8 characters.');
+    }
+
     const newUserID = `${args.username}@${new Date().getTime()}`;
     const newUserUsername = args.username;
     const newUserPassword = await bcrypt.hash(args.password, 10);
@@ -181,7 +185,7 @@ function getExistingUser(username, users) {
  * Put back every product that the user attempted to purchase but was
  * unable to because of no available inventory.
  */
-function putProductsBack(){
+function putProductsBack() {
     for (let i = 0; i < cartInfo.cart.productsInCart.length; i++) {
         for (let j = 0; j < productList.length; j++) {
             if (cartInfo.cart.productsInCart[i].title === productList[j].title) {
