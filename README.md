@@ -2,6 +2,10 @@
 
 This API was built for Shopify's Developer Intern Challenge. It was built with Node.js and GraphQL.
 
+## Requirements
+
+Please make sure `node` and `npm` are up to date.
+
 ## Documentation
 
 ### Shopify Marketplace API Documentation
@@ -15,7 +19,7 @@ A tutorial on sample end-to-end flows of the application can be seen below.
 ### Additional Documentation
 
 Check out the additional documentation for more information and further discussion:
-- [PROCESS.md][process_doc] - describes the process of how this API was built from the very beginning, *including* all the mistakes that were made
+- [PROCESS.md][process_doc] - describes the process of how this API was built from the very beginning
 - [GRAPHQL.md][graphql_doc] - summarizes how the schema was designed, and how the resolvers were implemented
 - [SECURITY.md][security] - outlines the security measures implemented in the API
 - [TESTING.md][testing] - focuses on testing of the API to ensure robustness
