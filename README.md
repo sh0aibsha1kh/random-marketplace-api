@@ -1,6 +1,6 @@
-# Shopify Marketplace API
+# Random Marketplace API
 
-This API was built for Shopify's Developer Intern Challenge. It was built with Node.js and GraphQL.
+This API was built to learn and practice GraphQL.
 
 ## Requirements
 
