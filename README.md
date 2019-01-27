@@ -1,6 +1,6 @@
 # Random Marketplace API
 
-This API was built to learn and practice GraphQL.
+This API was built to learn and experiment with GraphQL.
 
 ## Requirements
 
@@ -8,21 +8,11 @@ Please make sure `node` and `npm` are up to date.
 
 ## Documentation
 
-### Shopify Marketplace API Documentation
-
 Once you launch the server and access the page (http://localhost:4000), all of the API documentation will be available by clicking the green **SCHEMA** button on the right.
 
 ![alt text][schema]
 
 A tutorial on sample end-to-end flows of the application can be seen below.
-
-### Additional Documentation
-
-Check out the additional documentation for more information and further discussion:
-- [PROCESS.md][process_doc] - describes the process of how this API was built from the very beginning
-- [GRAPHQL.md][graphql_doc] - summarizes how the schema was designed, and how the resolvers were implemented
-- [SECURITY.md][security] - outlines the security measures implemented in the API
-- [TESTING.md][testing] - focuses on testing of the API to ensure robustness
 
 ## Getting Started
 
@@ -186,6 +176,14 @@ In a separate terminal, while the server is currently running on http://localhos
 npm test
 ```
 
+## Notes
+
+I used https://www.randomlists.com/things to generate a list of 100 random items to work with.
+
+Then, I created a python script to go through the random item list and generate a javascript object file ([ProductList.js](../mock_data/ProductList.js)) which contains the `title`, `price`, and `inventory_count` of the items.
+
+
+
 ## Next Steps
 - API
     - Connect to a database
@@ -204,11 +202,3 @@ npm test
 
 <!-- IMAGES -->
 [schema]: documentation/schema_button.png
-
-<!-- DOCUMENTS -->
-[process_doc]: documentation/PROCESS.md
-[graphql_doc]: documentation/GRAPHQL.md
-[security]: documentation/SECURITY.md
-[testing]: documentation/TESTING.md
-
-<!-- LINKS -->

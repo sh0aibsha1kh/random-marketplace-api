@@ -1,7 +1,7 @@
 {
-  "name": "shopify-marketplace-api",
+  "name": "random-marketplace-api",
   "version": "1.0.0",
-  "description": "Shopify Developer Intern Challenge - Summer 2019",
+  "description": "A project to help me learn and experiment with GraphQL",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sh0aibsha1kh/shopify-marketplace-api.git"
+    "url": "git+https://github.com/sh0aibsha1kh/random-marketplace-api.git"
   },
   "keywords": [
     "node",
@@ -21,9 +21,9 @@
   "author": "Shoaib Shaikh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sh0aibsha1kh/shopify-marketplace-api/issues"
+    "url": "https://github.com/sh0aibsha1kh/random-marketplace-api/issues"
   },
-  "homepage": "https://github.com/sh0aibsha1kh/shopify-marketplace-api#readme",
+  "homepage": "https://github.com/sh0aibsha1kh/random-marketplace-api#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "graphql-request": "^1.8.2",
